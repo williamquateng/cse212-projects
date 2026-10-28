@@ -9,11 +9,22 @@ public static class Arrays
     public static double[] MultiplesOf(double number, int length)
     {
         // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Plan:
+        // 1. Create an array with the required length.
+        // 2. Loop through each position in the array.
+        // 3. Calculate the multiple by multiplying the starting number
+        //    by the position number plus one.
+        // 4. Store the result in the array.
+        // 5. Return the completed array.
 
-        return []; // replace this return statement with your own
+        double[] result = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            result[i] = number * (i + 1);
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -26,8 +37,24 @@ public static class Arrays
     public static void RotateListRight(List<int> data, int amount)
     {
         // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Plan:
+        // 1. Find the index where the list should be split.
+        // 2. Copy the last 'amount' elements into a temporary list.
+        // 3. Copy the remaining elements from the beginning into another list.
+        // 4. Clear the original list.
+        // 5. Add the last elements back first.
+        // 6. Add the beginning elements after them.
+        // 7. The original list is now rotated to the right.
+
+        int splitIndex = data.Count - amount;
+
+        List<int> endPart = data.GetRange(splitIndex, amount);
+        List<int> startPart = data.GetRange(0, splitIndex);
+
+        data.Clear();
+
+        data.AddRange(endPart);
+        data.AddRange(startPart);
     }
+    
 }
