@@ -11,24 +11,52 @@ public class CustomerService {
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: Create a queue with size 0.
+        // Expected Result: Queue defaults to a size of 10. 
         Console.WriteLine("Test 1");
 
-        // Defect(s) Found: 
+        var cs1 = new CustomerService(0);
+        Console.WriteLine(cs1);
+
+        // Defect(s) Found: None
 
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
-        // Expected Result: 
+        // Scenario:  Fill the queue to its maximum size and add one more customer.
+        // Expected Result: Display "Maximum Number of Customers in Queue."
         Console.WriteLine("Test 2");
 
-        // Defect(s) Found: 
+        // Defect(s) Found:
+        // Queue allows one extra customer because
+       // _queue.Count > _maxSize should be
+      // _queue.Count >= _maxSize 
 
         Console.WriteLine("=================");
 
-        // Add more Test Cases As Needed Below
+        // Test 3
+      // Scenario: Serve a customer when the queue is empty.
+      // Expected Result: Display an error message.
+
+        Console.WriteLine("Test 3");
+
+        // Defect(s) Found:
+       // Program crashes because ServeCustomer()
+      // does not check whether the queue is empty.
+
+       Console.WriteLine("=================");
+
+       // Test 4
+      // Scenario: Add two customers and serve one.
+      // Expected Result: First customer added should be served first (FIFO).
+
+       Console.WriteLine("Test 4");
+
+        // Defect(s) Found:
+        // ServeCustomer removes the first customer
+        // before displaying it, causing the wrong
+       // customer to be shown.
+       Console.WriteLine("=================");
     }
 
     private readonly List<Customer> _queue = new();
