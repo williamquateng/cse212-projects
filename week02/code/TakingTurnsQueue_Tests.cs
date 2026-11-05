@@ -43,7 +43,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: Queue order was affected when players were added while processing.
+    // Defect(s) Found: The queue was not following FIFO behavior because new people were added to the front of the queue instead of the back.
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -143,9 +143,10 @@ public class TakingTurnsQueueTests
     [TestMethod]
     // Scenario: Try to get the next person from an empty queue
     // Expected Result: Exception should be thrown with appropriate error message.
-    // Defect(s) Found: Verify empty queue throws InvalidOperationException with message "No one in the queue."
-    public void TestTakingTurnsQueue_Empty()
+    // Defect(s) Found:  None. The required InvalidOperationException was thrown with the correct message.   
+     public void TestTakingTurnsQueue_Empty()
     {
+        
         var players = new TakingTurnsQueue();
 
         try
